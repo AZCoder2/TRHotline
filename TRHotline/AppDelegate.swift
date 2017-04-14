@@ -24,17 +24,23 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  
-  var window: UIWindow?
-  let callManager = CallManager()
-  
-  class var shared: AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
-  }
-  
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    return true
-  }
-  
+    
+    var window: UIWindow?
+    let callManager = CallManager()
+    lazy var providerDelegate: ProviderDelegate = ProviderDelegate(callManager: self.callManager)
+    
+    class var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        return true
+    }
+    
+    // Let other classes access the provider delegate’s helper method
+    func displayIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+        
+        providerDelegate.reportIncomingCall(uuid: uuid, handle: handle, hasVideo: hasVideo, completion: completion)
+    }
 }
 
