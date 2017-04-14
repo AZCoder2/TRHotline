@@ -20,21 +20,39 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+import Foundation
+import CallKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class CallManager {
   
-  var window: UIWindow?
-  let callManager = CallManager()
+  var callsChangedHandler: (() -> Void)?
   
-  class var shared: AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
+  private(set) var calls = [Call]()
+  
+  func callWithUUID(uuid: UUID) -> Call? {
+    guard let index = calls.index(where: { $0.uuid == uuid }) else {
+      return nil
+    }
+    return calls[index]
   }
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    return true
+  func add(call: Call) {
+    calls.append(call)
+    call.stateChanged = { [weak self] in
+      guard let strongSelf = self else { return }
+      strongSelf.callsChangedHandler?()
+    }
+    callsChangedHandler?()
   }
   
+  func remove(call: Call) {
+    guard let index = calls.index(where: { $0 === call }) else { return }
+    calls.remove(at: index)
+    callsChangedHandler?()
+  }
+  
+  func removeAllCalls() {
+    calls.removeAll()
+    callsChangedHandler?()
+  }
 }
-

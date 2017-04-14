@@ -22,19 +22,38 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class CallTableViewCell: UITableViewCell {
   
-  var window: UIWindow?
-  let callManager = CallManager()
-  
-  class var shared: AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
+  var callState: CallState? {
+    didSet {
+      guard let callState = callState else { return }
+      
+      switch callState {
+      case .active:
+        callStatusLabel.text = "Active"
+      case .held:
+        callStatusLabel.text = "On Hold"
+      case .connecting:
+        callStatusLabel.text = "Connecting..."
+      default:
+        callStatusLabel.text = "Dialing..."
+      }
+    }
   }
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    return true
+  var incoming: Bool = false {
+    didSet {
+      iconImageView.image = incoming ? #imageLiteral(resourceName: "incoming_arrow") : #imageLiteral(resourceName: "outgoing_arrow")
+    }
   }
   
-}
+  var callerHandle: String? {
+    didSet {
+      callerHandleLabel.text = callerHandle
+    }
+  }
 
+  @IBOutlet private var iconImageView: UIImageView!
+  @IBOutlet private var callerHandleLabel: UILabel!
+  @IBOutlet private var callStatusLabel: UILabel!
+}

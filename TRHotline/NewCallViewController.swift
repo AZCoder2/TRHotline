@@ -22,19 +22,25 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class NewCallViewController: UIViewController {
   
-  var window: UIWindow?
-  let callManager = CallManager()
-  
-  class var shared: AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
+  var handle: String? {
+    return handleTextField.text
   }
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    return true
+  var incoming: Bool {
+    return incomingSegmentedControl.selectedSegmentIndex == 0
   }
   
-}
+  var videoEnabled: Bool {
+    return videoSwitch.isOn
+  }
+  
+  @IBOutlet private var handleTextField: UITextField!
+  @IBOutlet private var videoSwitch: UISwitch!
+  @IBOutlet private var incomingSegmentedControl: UISegmentedControl!
 
+  @IBAction private func cancel(_ sender: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
+  }
+}

@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23C537F11EA0757700A59C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C537F01EA0757700A59C51 /* AppDelegate.swift */; };
-		23C537F31EA0757700A59C51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C537F21EA0757700A59C51 /* ViewController.swift */; };
-		23C537F61EA0757700A59C51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C537F41EA0757700A59C51 /* Main.storyboard */; };
-		23C537F81EA0757700A59C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C537F71EA0757700A59C51 /* Assets.xcassets */; };
-		23C537FB1EA0757700A59C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C537F91EA0757700A59C51 /* LaunchScreen.storyboard */; };
+		23C5380A1EA0761E00A59C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C538091EA0761E00A59C51 /* Assets.xcassets */; };
+		23C5380D1EA0765600A59C51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C5380B1EA0765600A59C51 /* Main.storyboard */; };
+		23C5380E1EA0765600A59C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C5380C1EA0765600A59C51 /* LaunchScreen.storyboard */; };
+		23C538101EA0767A00A59C51 /* CallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C5380F1EA0767A00A59C51 /* CallTableViewCell.swift */; };
+		23C538131EA0768A00A59C51 /* CallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C538111EA0768A00A59C51 /* CallsViewController.swift */; };
+		23C538141EA0768A00A59C51 /* NewCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C538121EA0768A00A59C51 /* NewCallViewController.swift */; };
+		23C538161EA076B700A59C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C538151EA076B700A59C51 /* AppDelegate.swift */; };
+		23C538191EA076C400A59C51 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C538171EA076C400A59C51 /* Call.swift */; };
+		23C5381A1EA076C400A59C51 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C538181EA076C400A59C51 /* CallManager.swift */; };
+		23C5381C1EA076D800A59C51 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C5381B1EA076D800A59C51 /* Audio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23C537ED1EA0757700A59C51 /* TRHotline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRHotline.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23C537F01EA0757700A59C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23C537F21EA0757700A59C51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		23C537F51EA0757700A59C51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		23C537F71EA0757700A59C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		23C537FA1EA0757700A59C51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23C537FC1EA0757700A59C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23C538091EA0761E00A59C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23C5380B1EA0765600A59C51 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		23C5380C1EA0765600A59C51 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23C5380F1EA0767A00A59C51 /* CallTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallTableViewCell.swift; sourceTree = "<group>"; };
+		23C538111EA0768A00A59C51 /* CallsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallsViewController.swift; sourceTree = "<group>"; };
+		23C538121EA0768A00A59C51 /* NewCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCallViewController.swift; sourceTree = "<group>"; };
+		23C538151EA076B700A59C51 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23C538171EA076C400A59C51 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
+		23C538181EA076C400A59C51 /* CallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		23C5381B1EA076D800A59C51 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,75 @@
 		23C537EF1EA0757700A59C51 /* TRHotline */ = {
 			isa = PBXGroup;
 			children = (
-				23C537F01EA0757700A59C51 /* AppDelegate.swift */,
-				23C537F21EA0757700A59C51 /* ViewController.swift */,
-				23C537F41EA0757700A59C51 /* Main.storyboard */,
-				23C537F71EA0757700A59C51 /* Assets.xcassets */,
-				23C537F91EA0757700A59C51 /* LaunchScreen.storyboard */,
-				23C537FC1EA0757700A59C51 /* Info.plist */,
+				23C538041EA075C600A59C51 /* App */,
+				23C538021EA0759B00A59C51 /* Audio */,
+				23C538031EA075AA00A59C51 /* Call Management */,
+				23C538051EA075CD00A59C51 /* UI */,
+				23C538081EA075E400A59C51 /* Supporting Files */,
 			);
 			path = TRHotline;
+			sourceTree = "<group>";
+		};
+		23C538021EA0759B00A59C51 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				23C5381B1EA076D800A59C51 /* Audio.swift */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		23C538031EA075AA00A59C51 /* Call Management */ = {
+			isa = PBXGroup;
+			children = (
+				23C538171EA076C400A59C51 /* Call.swift */,
+				23C538181EA076C400A59C51 /* CallManager.swift */,
+			);
+			name = "Call Management";
+			sourceTree = "<group>";
+		};
+		23C538041EA075C600A59C51 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				23C538151EA076B700A59C51 /* AppDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		23C538051EA075CD00A59C51 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				23C538071EA075DA00A59C51 /* View Controllers */,
+				23C538061EA075D300A59C51 /* Views */,
+				23C5380B1EA0765600A59C51 /* Main.storyboard */,
+				23C5380C1EA0765600A59C51 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		23C538061EA075D300A59C51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23C5380F1EA0767A00A59C51 /* CallTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		23C538071EA075DA00A59C51 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				23C538111EA0768A00A59C51 /* CallsViewController.swift */,
+				23C538121EA0768A00A59C51 /* NewCallViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		23C538081EA075E400A59C51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23C538091EA0761E00A59C51 /* Assets.xcassets */,
+				23C537FC1EA0757700A59C51 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C537FB1EA0757700A59C51 /* LaunchScreen.storyboard in Resources */,
-				23C537F81EA0757700A59C51 /* Assets.xcassets in Resources */,
-				23C537F61EA0757700A59C51 /* Main.storyboard in Resources */,
+				23C5380E1EA0765600A59C51 /* LaunchScreen.storyboard in Resources */,
+				23C5380A1EA0761E00A59C51 /* Assets.xcassets in Resources */,
+				23C5380D1EA0765600A59C51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,31 +208,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C537F31EA0757700A59C51 /* ViewController.swift in Sources */,
-				23C537F11EA0757700A59C51 /* AppDelegate.swift in Sources */,
+				23C538161EA076B700A59C51 /* AppDelegate.swift in Sources */,
+				23C538101EA0767A00A59C51 /* CallTableViewCell.swift in Sources */,
+				23C538191EA076C400A59C51 /* Call.swift in Sources */,
+				23C5381A1EA076C400A59C51 /* CallManager.swift in Sources */,
+				23C538141EA0768A00A59C51 /* NewCallViewController.swift in Sources */,
+				23C538131EA0768A00A59C51 /* CallsViewController.swift in Sources */,
+				23C5381C1EA076D800A59C51 /* Audio.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		23C537F41EA0757700A59C51 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23C537F51EA0757700A59C51 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		23C537F91EA0757700A59C51 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23C537FA1EA0757700A59C51 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		23C537FD1EA0757700A59C51 /* Debug */ = {

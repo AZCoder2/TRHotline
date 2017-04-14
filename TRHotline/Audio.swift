@@ -20,21 +20,23 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+import AVFoundation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-  
-  var window: UIWindow?
-  let callManager = CallManager()
-  
-  class var shared: AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
+func configureAudioSession() {
+  print("Configuring audio session")
+  let session = AVAudioSession.sharedInstance()
+  do {
+    try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+    try session.setMode(AVAudioSessionModeVoiceChat)
+  } catch (let error) {
+    print("Error while configuring audio session: \(error)")
   }
-  
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    return true
-  }
-  
 }
 
+func startAudio() {
+  print("Starting audio")
+}
+
+func stopAudio() {
+  print("Stopping audio")
+}
