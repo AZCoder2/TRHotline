@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236CCD1A1EA083A600BAE196 /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CCD191EA083A600BAE196 /* ProviderDelegate.swift */; };
 		23C5380A1EA0761E00A59C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C538091EA0761E00A59C51 /* Assets.xcassets */; };
 		23C5380D1EA0765600A59C51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C5380B1EA0765600A59C51 /* Main.storyboard */; };
 		23C5380E1EA0765600A59C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C5380C1EA0765600A59C51 /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		236CCD191EA083A600BAE196 /* ProviderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
 		23C537ED1EA0757700A59C51 /* TRHotline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRHotline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C537FC1EA0757700A59C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23C538091EA0761E00A59C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				23C538151EA076B700A59C51 /* AppDelegate.swift */,
+				236CCD191EA083A600BAE196 /* ProviderDelegate.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				23C538141EA0768A00A59C51 /* NewCallViewController.swift in Sources */,
 				23C538131EA0768A00A59C51 /* CallsViewController.swift in Sources */,
 				23C5381C1EA076D800A59C51 /* Audio.swift in Sources */,
+				236CCD1A1EA083A600BAE196 /* ProviderDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9494MA7F48;
 				INFOPLIST_FILE = TRHotline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.latitude23.TRHotline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -333,6 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9494MA7F48;
 				INFOPLIST_FILE = TRHotline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.latitude23.TRHotline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -359,6 +365,7 @@
 				23C538011EA0757700A59C51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
