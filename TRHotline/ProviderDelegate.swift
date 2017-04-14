@@ -10,6 +10,8 @@ import Foundation
 import AVFoundation
 import CallKit
 
+import os.log
+
 class ProviderDelegate: NSObject {
     
     // Storage for both provider and call manager
@@ -39,7 +41,12 @@ class ProviderDelegate: NSObject {
         return providerConfiguration
     }
     
-    func reportIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+    func reportIncomingCall(uuid: UUID,
+                            handle: String,
+                            hasVideo: Bool = false,
+                            completion: ((NSError?) -> Void)?) {
+        
+        os_log("Entering reportIncomingCall", log: OSLog.default, type: .debug)
         
         // Prepare call update for system with metadata
         let update = CXCallUpdate()
@@ -50,12 +57,14 @@ class ProviderDelegate: NSObject {
         provider.reportNewIncomingCall(with: uuid, update: update) { error in
             if error == nil {
                 
-                // Completion handler - succcess
+                // Completion handler - success
+                os_log("Incoming call detected", log: OSLog.default, type: .debug)
                 let call = Call(uuid: uuid, handle: handle)
                 self.callManager.add(call: call)
             }
             
             // Completion handler - failure
+            os_log("Failed incoming call", log: OSLog.default, type: .debug)
             completion?(error as NSError?)
         }
     }
