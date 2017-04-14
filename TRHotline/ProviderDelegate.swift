@@ -82,4 +82,48 @@ extension ProviderDelegate: CXProviderDelegate {
         
         callManager.removeAllCalls()
     }
+    
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        
+        // Get refererence to call manager with related UUID
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        // Configure audio session by activating session at higher priority
+        configureAudioSession()
+        
+        // Answer indicates call is now active
+        call.answer()
+        
+        // Fail or fulfill
+        action.fulfill()
+    }
+    
+    // Begin processing audio
+    func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
+        startAudio()
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
+        
+        // Get reference to call manager with related UID
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        // End audio
+        stopAudio()
+        
+        // End call
+        call.end()
+        
+        // Fail or fulfill
+        action.fulfill()
+        
+        // Dispose of call
+        callManager.remove(call: call)
+    }
 }
