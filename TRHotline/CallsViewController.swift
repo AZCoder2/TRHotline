@@ -42,6 +42,20 @@ class CallsViewController: UITableViewController {
   }
   
   @IBAction private func unwindForNewCall(_ segue: UIStoryboardSegue) {
+    
+    // You’ll extract the properties of the call from NewCallViewController
+    let newCallController = segue.source as! NewCallViewController
+    guard let handle = newCallController.handle else { return }
+    let videoEnabled = newCallController.videoEnabled
+    
+    // The user can suspend the app before the action completes, so it should use a background task
+    let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+    DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
+        AppDelegate.shared.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: videoEnabled) { _ in
+            UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+        }
+    }
+    
   }
   
 }
