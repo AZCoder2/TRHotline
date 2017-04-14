@@ -29,71 +29,86 @@ private let presentOutgoingCallViewControllerSegue = "PresentOutgoingCallViewCon
 private let callCellIdentifier = "CallCell"
 
 class CallsViewController: UITableViewController {
-  
-  var callManager: CallManager!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    callManager = AppDelegate.shared.callManager
+    var callManager: CallManager!
     
-    callManager.callsChangedHandler = { [weak self] in
-      guard let strongSelf = self else { return }
-      strongSelf.tableView.reloadData()
-    }
-  }
-  
-  @IBAction private func unwindForNewCall(_ segue: UIStoryboardSegue) {
-    
-    os_log("Entered unwindForNewCall", log: OSLog.default, type: .debug)
-    
-    // You’ll extract the properties of the call from NewCallViewController
-    let newCallController = segue.source as! NewCallViewController
-    guard let handle = newCallController.handle else { return }
-    let videoEnabled = newCallController.videoEnabled
-    
-    // The user can suspend the app before the action completes, so it should use a background task
-    let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-    
-    os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
-    
-    DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-        AppDelegate.shared.displayIncomingCall(uuid: UUID(),
-                                               handle: handle,
-                                               hasVideo: videoEnabled) { _ in
-            os_log("In dispatch queue", log: OSLog.default, type: .debug)
-            UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        callManager = AppDelegate.shared.callManager
+        
+        callManager.callsChangedHandler = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.tableView.reloadData()
         }
     }
     
-  }
-  
+    @IBAction private func unwindForNewCall(_ segue: UIStoryboardSegue) {
+        
+        os_log("Entered unwindForNewCall", log: OSLog.default, type: .debug)
+        
+        // You’ll extract the properties of the call from NewCallViewController
+        let newCallController = segue.source as! NewCallViewController
+        guard let handle = newCallController.handle else { return }
+        let videoEnabled = newCallController.videoEnabled
+        
+        // The user can suspend the app before the action completes, so it should use a background task
+        let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        
+        os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
+        
+        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
+            AppDelegate.shared.displayIncomingCall(uuid: UUID(),
+                                                   handle: handle,
+                                                   hasVideo: videoEnabled) { _ in
+                                                    os_log("In dispatch queue", log: OSLog.default, type: .debug)
+                                                    UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+        }
+        
+    }
+    
+    // Swipe to delete ends call
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let call = callManager.calls[indexPath.row]
+        callManager.end(call: call)
+    }
+    
+    
 }
 
 // MARK: - UITableViewDataSource
 
 extension CallsViewController {
-  
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return callManager.calls.count
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let call = callManager.calls[indexPath.row]
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: callCellIdentifier) as! CallTableViewCell
-    cell.callerHandle = call.handle
-    cell.callState = call.state
-    cell.incoming = !call.outgoing
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return callManager.calls.count
+    }
     
-    return cell
-  }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let call = callManager.calls[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: callCellIdentifier) as! CallTableViewCell
+        cell.callerHandle = call.handle
+        cell.callState = call.state
+        cell.incoming = !call.outgoing
+        
+        return cell
+    }
 }
 
 // MARK - UITableViewDelegate
 
 extension CallsViewController {
-  override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-    return "End"
-  }
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "End"
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let call = callManager.calls[indexPath.row]
+        call.state = call.state == .held ? .active : .held
+        callManager?.setHeld(call: call, onHold: call.state == .held)
+        
+        tableView.reloadData()
+    }
 }

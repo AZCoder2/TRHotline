@@ -83,6 +83,7 @@ extension ProviderDelegate: CXProviderDelegate {
         callManager.removeAllCalls()
     }
     
+    // Process answer call action
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         
         // Get refererence to call manager with related UUID
@@ -106,6 +107,7 @@ extension ProviderDelegate: CXProviderDelegate {
         startAudio()
     }
     
+    // Process end call action
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
         
         // Get reference to call manager with related UID
@@ -125,5 +127,26 @@ extension ProviderDelegate: CXProviderDelegate {
         
         // Dispose of call
         callManager.remove(call: call)
+    }
+    
+    // Process a held call
+    func provider(_ provider: CXProvider, perform action: CXSetHeldCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        // Update state of call based on on-hold flag
+        call.state = action.isOnHold ? .held : .active
+        
+        // If on hold, stop audio, otherwise start audio
+        if call.state == .held {
+            stopAudio()
+        } else {
+            startAudio()
+        }
+        
+        // Fail or fulfill
+        action.fulfill()
     }
 }
