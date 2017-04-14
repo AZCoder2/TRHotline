@@ -21,6 +21,7 @@
  */
 
 import UIKit
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,9 +39,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // Let other classes access the provider delegate’s helper method
-    func displayIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+    func displayIncomingCall(uuid: UUID,
+                             handle: String,
+                             hasVideo: Bool = false,
+                             completion: ((NSError?) -> Void)?) {
         
-        providerDelegate.reportIncomingCall(uuid: uuid, handle: handle, hasVideo: hasVideo, completion: completion)
+        os_log("Entered displayIncomingCall", log: OSLog.default, type: .debug)
+        
+        providerDelegate.reportIncomingCall(uuid: uuid,
+                                            handle: handle,
+                                            hasVideo: hasVideo,
+                                            completion: completion)
     }
 }
 

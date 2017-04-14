@@ -22,6 +22,8 @@
 
 import UIKit
 
+import os.log
+
 private let presentIncomingCallViewControllerSegue = "PresentIncomingCallViewController"
 private let presentOutgoingCallViewControllerSegue = "PresentOutgoingCallViewController"
 private let callCellIdentifier = "CallCell"
@@ -43,6 +45,8 @@ class CallsViewController: UITableViewController {
   
   @IBAction private func unwindForNewCall(_ segue: UIStoryboardSegue) {
     
+    os_log("Entered unwindForNewCall", log: OSLog.default, type: .debug)
+    
     // You’ll extract the properties of the call from NewCallViewController
     let newCallController = segue.source as! NewCallViewController
     guard let handle = newCallController.handle else { return }
@@ -50,8 +54,14 @@ class CallsViewController: UITableViewController {
     
     // The user can suspend the app before the action completes, so it should use a background task
     let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+    
+    os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
+    
     DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-        AppDelegate.shared.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: videoEnabled) { _ in
+        AppDelegate.shared.displayIncomingCall(uuid: UUID(),
+                                               handle: handle,
+                                               hasVideo: videoEnabled) { _ in
+            os_log("In dispatch queue", log: OSLog.default, type: .debug)
             UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
         }
     }
