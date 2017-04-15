@@ -50,20 +50,22 @@ class CallsViewController: UITableViewController {
         // You’ll extract the properties of the call from NewCallViewController
         let newCallController = segue.source as! NewCallViewController
         guard let handle = newCallController.handle else { return }
+        
+        let incoming = newCallController.incoming
         let videoEnabled = newCallController.videoEnabled
         
-        // The user can suspend the app before the action completes, so it should use a background task
-        let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-        
-        os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
-        
-        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-            AppDelegate.shared.displayIncomingCall(uuid: UUID(),
-                                                   handle: handle,
-                                                   hasVideo: videoEnabled) { _ in
-                                                    os_log("In dispatch queue", log: OSLog.default, type: .debug)
-                                                    UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+        if incoming { // Normal processing of incoming calls
+            let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+            
+            os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
+
+            DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
+                AppDelegate.shared.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: videoEnabled) { _ in
+                    UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+                }
             }
+        } else { // Call manager handles outgoing calls
+            callManager.startCall(handle: handle, videoEnabled: videoEnabled)
         }
         
     }

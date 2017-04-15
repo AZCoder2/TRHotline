@@ -149,4 +149,34 @@ extension ProviderDelegate: CXProviderDelegate {
         // Fail or fulfill
         action.fulfill()
     }
+    
+    func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
+        let call = Call(uuid: action.callUUID, outgoing: true, handle: action.handle.value)
+        
+        // Configure audio session
+        configureAudioSession()
+        
+        // Delegate monitors call's life cycle
+        call.connectedStateChanged = { [weak self, weak call] in
+            guard let strongSelf = self, let call = call else { return }
+            
+            if call.connectedState == .pending {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, startedConnectingAt: nil)
+            } else if call.connectedState == .complete {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, connectedAt: nil)
+            }
+        }
+        
+        // Call start on call triggers lifecycle changes
+        call.start { [weak self, weak call] success in
+            guard let strongSelf = self, let call = call else { return }
+            
+            if success {
+                action.fulfill()
+                strongSelf.callManager.add(call: call)
+            } else {
+                action.fail()
+            }
+        }
+    }
 }
