@@ -36,25 +36,16 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
     }
 
     private func addBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext) throws {
-        // Retrieve phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        //
-        // Numbers must be provided in numerically ascending order.
-        let phoneNumbers: [CXCallDirectoryPhoneNumber] = [ 14085555555, 18005555555 ]
-
+        let phoneNumbers: [CXCallDirectoryPhoneNumber] = [ 1234 ]
         for phoneNumber in phoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
     }
 
     private func addIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) throws {
-        // Retrieve phone numbers to identify and their identification labels from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        //
-        // Numbers must be provided in numerically ascending order.
-        let phoneNumbers: [CXCallDirectoryPhoneNumber] = [ 18775555555, 18885555555 ]
-        let labels = [ "Telemarketer", "Local business" ]
-
+        let phoneNumbers: [CXCallDirectoryPhoneNumber] = [ 1111 ]
+        let labels = [ "RW Tutorial Team" ]
+        
         for (phoneNumber, label) in zip(phoneNumbers, labels) {
             context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
         }
