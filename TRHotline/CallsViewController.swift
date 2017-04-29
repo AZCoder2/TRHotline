@@ -58,9 +58,10 @@ class CallsViewController: UITableViewController {
             let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
             
             os_log("Just before entering dispatch queue", log: OSLog.default, type: .debug)
-
+            
             DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
                 AppDelegate.shared.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: videoEnabled) { _ in
+                    os_log("Entered Dispatch Queue", log: OSLog.default, type: .debug)
                     UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
                 }
             }

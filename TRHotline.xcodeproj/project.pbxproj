@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235D72381EA1D96E00080847 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D72371EA1D96E00080847 /* CallDirectoryHandler.swift */; };
+		235D723C1EA1D96E00080847 /* HotlineDirectory.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 235D72351EA1D96E00080847 /* HotlineDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236CCD1A1EA083A600BAE196 /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CCD191EA083A600BAE196 /* ProviderDelegate.swift */; };
 		23C5380A1EA0761E00A59C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C538091EA0761E00A59C51 /* Assets.xcassets */; };
 		23C5380D1EA0765600A59C51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C5380B1EA0765600A59C51 /* Main.storyboard */; };
@@ -20,7 +22,34 @@
 		23C5381C1EA076D800A59C51 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C5381B1EA076D800A59C51 /* Audio.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		235D723A1EA1D96E00080847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23C537E51EA0757700A59C51 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 235D72341EA1D96E00080847;
+			remoteInfo = HotlineDirectory;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		235D72301EA19BA300080847 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				235D723C1EA1D96E00080847 /* HotlineDirectory.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		235D72351EA1D96E00080847 /* HotlineDirectory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HotlineDirectory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		235D72371EA1D96E00080847 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
+		235D72391EA1D96E00080847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236CCD191EA083A600BAE196 /* ProviderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
 		23C537ED1EA0757700A59C51 /* TRHotline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRHotline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C537FC1EA0757700A59C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		235D72321EA1D96E00080847 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23C537EA1EA0757700A59C51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,10 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		235D72361EA1D96E00080847 /* HotlineDirectory */ = {
+			isa = PBXGroup;
+			children = (
+				235D72371EA1D96E00080847 /* CallDirectoryHandler.swift */,
+				235D72391EA1D96E00080847 /* Info.plist */,
+			);
+			path = HotlineDirectory;
+			sourceTree = "<group>";
+		};
 		23C537E41EA0757700A59C51 = {
 			isa = PBXGroup;
 			children = (
 				23C537EF1EA0757700A59C51 /* TRHotline */,
+				235D72361EA1D96E00080847 /* HotlineDirectory */,
 				23C537EE1EA0757700A59C51 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				23C537ED1EA0757700A59C51 /* TRHotline.app */,
+				235D72351EA1D96E00080847 /* HotlineDirectory.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +188,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		235D72341EA1D96E00080847 /* HotlineDirectory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 235D723D1EA1D96F00080847 /* Build configuration list for PBXNativeTarget "HotlineDirectory" */;
+			buildPhases = (
+				235D72311EA1D96E00080847 /* Sources */,
+				235D72321EA1D96E00080847 /* Frameworks */,
+				235D72331EA1D96E00080847 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HotlineDirectory;
+			productName = HotlineDirectory;
+			productReference = 235D72351EA1D96E00080847 /* HotlineDirectory.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		23C537EC1EA0757700A59C51 /* TRHotline */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23C537FF1EA0757700A59C51 /* Build configuration list for PBXNativeTarget "TRHotline" */;
@@ -148,10 +212,12 @@
 				23C537E91EA0757700A59C51 /* Sources */,
 				23C537EA1EA0757700A59C51 /* Frameworks */,
 				23C537EB1EA0757700A59C51 /* Resources */,
+				235D72301EA19BA300080847 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				235D723B1EA1D96E00080847 /* PBXTargetDependency */,
 			);
 			name = TRHotline;
 			productName = TRHotline;
@@ -168,6 +234,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Latitude23;
 				TargetAttributes = {
+					235D72341EA1D96E00080847 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 9494MA7F48;
+						ProvisioningStyle = Automatic;
+					};
 					23C537EC1EA0757700A59C51 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 9494MA7F48;
@@ -189,11 +260,19 @@
 			projectRoot = "";
 			targets = (
 				23C537EC1EA0757700A59C51 /* TRHotline */,
+				235D72341EA1D96E00080847 /* HotlineDirectory */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		235D72331EA1D96E00080847 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23C537EB1EA0757700A59C51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +286,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		235D72311EA1D96E00080847 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				235D72381EA1D96E00080847 /* CallDirectoryHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23C537E91EA0757700A59C51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,7 +311,43 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		235D723B1EA1D96E00080847 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 235D72341EA1D96E00080847 /* HotlineDirectory */;
+			targetProxy = 235D723A1EA1D96E00080847 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		235D723E1EA1D96F00080847 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEVELOPMENT_TEAM = 9494MA7F48;
+				INFOPLIST_FILE = HotlineDirectory/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.latitude23.TRHotline.HotlineDirectory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		235D723F1EA1D96F00080847 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEVELOPMENT_TEAM = 9494MA7F48;
+				INFOPLIST_FILE = HotlineDirectory/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.latitude23.TRHotline.HotlineDirectory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		23C537FD1EA0757700A59C51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -321,6 +444,7 @@
 		23C538001EA0757700A59C51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9494MA7F48;
 				INFOPLIST_FILE = TRHotline/Info.plist;
@@ -335,6 +459,7 @@
 		23C538011EA0757700A59C51 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9494MA7F48;
 				INFOPLIST_FILE = TRHotline/Info.plist;
@@ -349,6 +474,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		235D723D1EA1D96F00080847 /* Build configuration list for PBXNativeTarget "HotlineDirectory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				235D723E1EA1D96F00080847 /* Debug */,
+				235D723F1EA1D96F00080847 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		23C537E81EA0757700A59C51 /* Build configuration list for PBXProject "TRHotline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
